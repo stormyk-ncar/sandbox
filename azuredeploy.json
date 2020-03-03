@@ -159,7 +159,8 @@
               "[concat('Microsoft.Compute/virtualMachines/', 'Storage-0')]",
               "[concat('Microsoft.Compute/virtualMachines/', 'Storage-1')]",
               "[concat('Microsoft.Compute/virtualMachines/', 'Storage-2')]",
-              "[concat('Microsoft.Compute/virtualMachines/', 'Storage-3')]"
+              "[concat('Microsoft.Compute/virtualMachines/', 'Storage-3')]",
+              "[concat('Microsoft.Compute/virtualMachines/', 'Storage-4')]"
             ],
             "copy": {
                 "name": "ComputeExtCopy",
@@ -281,7 +282,8 @@
                 "[concat('Microsoft.Compute/virtualMachines/', 'Storage-0')]",
                 "[concat('Microsoft.Compute/virtualMachines/', 'Storage-1')]",
                 "[concat('Microsoft.Compute/virtualMachines/', 'Storage-2')]",
-                "[concat('Microsoft.Compute/virtualMachines/', 'Storage-3')]"
+                "[concat('Microsoft.Compute/virtualMachines/', 'Storage-3')]",
+                "[concat('Microsoft.Compute/virtualMachines/', 'Storage-4')]"
             ],
             "properties": {
               "publisher": "Microsoft.Azure.Extensions",
@@ -381,11 +383,12 @@
                 "[concat('Microsoft.Compute/virtualMachines/', 'Storage-0')]",
                 "[concat('Microsoft.Compute/virtualMachines/', 'Storage-1')]",
                 "[concat('Microsoft.Compute/virtualMachines/', 'Storage-2')]",
-                "[concat('Microsoft.Compute/virtualMachines/', 'Storage-3')]"
+                "[concat('Microsoft.Compute/virtualMachines/', 'Storage-3')]",
+                "[concat('Microsoft.Compute/virtualMachines/', 'Storage-4')]"
             ],
             "copy": {
                 "name": "StorageExtCopy",
-                "count": 4
+                "count": 5
               },
             "properties": {
               "publisher": "Microsoft.Azure.Extensions",
@@ -585,10 +588,41 @@
                 "tapConfigurations": []
             }
         },
-        {
+                {
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2018-12-01",
             "name": "Storage-3-nic",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'LCIVNet', 'private')]"
+                ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAddress": "192.168.0.9",
+                            "privateIPAllocationMethod": "Static",
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'LCIVNet', 'private')]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4"
+                        }
+                    }
+                ],
+                "enableAcceleratedNetworking": false,
+                "enableIPForwarding": false,
+                "primary": true,
+                "tapConfigurations": []
+            }
+        },
+
+        {
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2018-12-01",
+            "name": "Storage-4-nic",
             "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'LCIVNet', 'private')]"
