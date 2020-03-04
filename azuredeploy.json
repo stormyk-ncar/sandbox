@@ -309,7 +309,7 @@
             ],
             "copy": {
                 "name": "StorageVmCopy",
-                "count": 4
+                "count": 5
               },
             "properties": {
                 "hardwareProfile": {
@@ -602,7 +602,7 @@
                         "name": "ipconfig1",
                         "properties": {
                             "provisioningState": "Succeeded",
-                            "privateIPAddress": "192.168.0.9",
+                            "privateIPAddress": "192.168.0.10",
                             "privateIPAllocationMethod": "Static",
                             "subnet": {
                                 "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'LCIVNet', 'private')]"
@@ -632,7 +632,7 @@
                     {
                         "name": "ipconfig1",
                         "properties": {
-                            "privateIPAddress": "192.168.0.10",
+                            "privateIPAddress": "192.168.0.11",
                             "privateIPAllocationMethod": "Static",
                             "subnet": {
                                 "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'LCIVNet', 'private')]"
