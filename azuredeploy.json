@@ -135,7 +135,7 @@
               },
             "properties": {
                 "hardwareProfile": {
-                    "vmSize": "Standard_D2as_v4"
+                    "vmSize": "Standard_D2s_v3"
                 },
                 "storageProfile": {
                     "imageReference": "[variables('NodeimageReference_compute')]",
@@ -212,7 +212,7 @@
             ],
             "properties": {
                 "hardwareProfile": {
-                    "vmSize": "Standard_D2as_v4"
+                    "vmSize": "Standard_D2s_v3"
                 },
                 "storageProfile": {
                     "imageReference": "[variables('NodeimageReference_login')]",
@@ -334,7 +334,7 @@
               },
             "properties": {
                 "hardwareProfile": {
-                    "vmSize": "Standard_D2as_v4"
+                    "vmSize": "Standard_D2s_v3"
                 },
                 "storageProfile": {
                     "imageReference": "[variables('NodeimageReference_storage')]",
