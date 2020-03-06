@@ -348,6 +348,29 @@
                         "diskSizeGB": 30
                     },
                     "dataDisks": [
+                        
+                        {
+                            "lun": 0,
+                            "name": "[concat('Storage-', copyindex(), '_DataDisk_0')]",
+                            "createOption": "Empty",
+                            "caching": "None",
+                            "writeAcceleratorEnabled": false,
+                            "managedDisk": {
+                                "storageAccountType": "Premium_LRS"
+                               },
+                            "diskSizeGB": 5
+                        },
+                        {
+                            "lun": 1,
+                            "name": "[concat('Storage-', copyindex(), '_DataDisk_1')]",
+                            "createOption": "Empty",
+                            "caching": "None",
+                            "writeAcceleratorEnabled": false,
+                            "managedDisk": {
+                                "storageAccountType": "Premium_LRS"
+                                },
+                            "diskSizeGB": 5
+                        }
                   ]
                 },
                 "osProfile": {
