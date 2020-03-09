@@ -23,6 +23,13 @@
                 "description": "Name of the customized disk image for the Compute nodes"
             }
         },
+        "CustomAdminImageName": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Name of the customized disk image for the Admin node"
+            }
+        },
         "CustomLoginImageName": {
             "type": "string",
             "defaultValue": "",
@@ -48,12 +55,13 @@
               
           "NodeimageReference_login": {"id": "[resourceId(parameters('CustomImageResourceGroup'), 'Microsoft.Compute/images', parameters('CustomLoginImageName'))]"},
           "NodeimageReference_compute": {"id": "[resourceId(parameters('CustomImageResourceGroup'), 'Microsoft.Compute/images', parameters('CustomComputeImageName'))]"},
+          "NodeimageReference_compute": {"id": "[resourceId(parameters('CustomImageResourceGroup'), 'Microsoft.Compute/images', parameters('CustomAdminImageName'))]"},
           "NodeimageReference_storage": {"id": "[resourceId(parameters('CustomImageResourceGroup'), 'Microsoft.Compute/images', parameters('CustomStorageImageName'))]"},
           
                     
           "vmScripts": {
             "scriptsToDownload": [
-                "https://raw.githubusercontent.com/grandparoach/sandbox/LCI/startup.sh"
+                "https://raw.githubusercontent.com/stormyk-ncar/sandbox/lci-slurm/startup.sh"
             ],
             "commandToExecute": "[concat('bash startup.sh ', parameters('adminUserName'), ' ', parameters('adminPassword'))]"
           }
